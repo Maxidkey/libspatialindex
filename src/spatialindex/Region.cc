@@ -249,7 +249,7 @@ bool Region::intersectsRegion(const Region& r) const
 
 	for (uint32_t i = 0; i < m_dimension; ++i)
 	{
-		if (m_pLow[i] > r.m_pHigh[i] || m_pHigh[i] < r.m_pLow[i]) return false;
+		if (m_pLow[i] >= r.m_pHigh[i] || m_pHigh[i] <= r.m_pLow[i]) return false;
 	}
 	return true;
 }
