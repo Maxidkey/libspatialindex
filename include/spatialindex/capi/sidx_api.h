@@ -418,6 +418,31 @@ SIDX_C_DLL char* SIDX_Version(void);
 
 SIDX_C_DLL char* Error_GetLastErrorMsg(void);
 
+// FastRTree3D C API - Optimized 3D R*-Tree implementation
+typedef void* FastRTree3DH;
+
+// FastRTree3D specific functions
+SIDX_DLL FastRTree3DH FastRTree3D_Create(void);
+SIDX_DLL void FastRTree3D_Destroy(FastRTree3DH tree);
+
+SIDX_DLL RTError FastRTree3D_Insert(FastRTree3DH tree,
+                                    int64_t id,
+                                    double* pdMin,
+                                    double* pdMax);
+
+SIDX_DLL RTError FastRTree3D_IntersectionQuery(FastRTree3DH tree,
+                                               double* pdMin,
+                                               double* pdMax,
+                                               int64_t** ids,
+                                               uint64_t* nResults);
+
+SIDX_DLL RTError FastRTree3D_IntersectionQueryCount(FastRTree3DH tree,
+                                                    double* pdMin,
+                                                    double* pdMax,
+                                                    uint64_t* nResults);
+
+SIDX_DLL uint32_t FastRTree3D_GetHeight(FastRTree3DH tree);
+
 IDX_C_END
 
 #endif
